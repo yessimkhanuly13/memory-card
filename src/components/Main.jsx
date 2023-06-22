@@ -15,92 +15,116 @@ import wizzards from '../assets/wizzards.png'
 import './main.css'
 
 function Main() {
-
+    const [array, setArray] = useState([]);
     const [count, setCount] = useState(0);
-
+    
     const shuffleArray = (array) =>{
         for(let i = array.length - 1; i >= 0; i--){
-            const randomIndex = Math.floor(Math.random() * i+1);
+            const randomIndex = Math.floor(Math.random() * i);
             [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
         }
         return array
     }
 
-    const arr = [
-        {   
-            isClicked:false, 
-            name:"magic",
-            img:magic
-        },
-        {   
-            isClicked:false, 
-            name:"gsw", 
-            img:gsw
-        },
-        {   
-            isClicked:false, 
-            name:"jazz", 
-            img:jazz
-        },
-        {   
-            isClicked:false, 
-            name:"knicks", 
-            img:knicks
-        },
-        {   
-            isClicked:false, 
-            name:"mavericks", 
-            img:mavericks
-        },
-        {   
-            isClicked:false, 
-            name:"nets", 
-            img:nets
-        },
-        {   
-            isClicked:false, 
-            name:"nuggets", 
-            img:nuggets
-        },
-        {   
-            isClicked:false, 
-            name:"okc", 
-            img:okc
-        },
-        {   
-            isClicked:false, 
-            name:"pacers", 
-            img:pacers
-        },
-        {   
-            isClicked:false, 
-            name:"raptors", 
-            img:raptors
-        },
-        {   
-            isClicked:false, 
-            name:"rockets", 
-            img:rockets
-        },
-        {   
-            isClicked:false, 
-            name:"wizzards", 
-            img:wizzards
+    const incrementCount = (object) =>{
+
+        if(object.isClicked === false){
+            setCount(count + 1);
+            setArray((prevArray)=>{
+                const updatedArr = prevArray.map((item)=>{
+                    if(item.name === object.name){
+                        return {...item, isClicked:true}
+                    }
+                    return item;
+                })
+                return updatedArr;
+            })
+        }else{
+            setCount(0);
+            setArray((prevArray)=>{
+                const updateArr = prevArray.map((item)=>{
+                    return {...item, isClicked:false};
+                })
+                return updateArr;
+            })
         }
-    ]
+
+    }
 
     useEffect(()=>{
-        console.log(arr)
-        shuffleArray(arr);
-        console.log(arr)
-    },[])
+        const arr = [
+            {   
+                isClicked:false, 
+                name:"jazz", 
+                img:jazz
+            },
+            {   
+                isClicked:false, 
+                name:"knicks", 
+                img:knicks
+            },
+            {   
+                isClicked:false, 
+                name:"mavericks", 
+                img:mavericks
+            },
+            {   
+                isClicked:false, 
+                name:"nets", 
+                img:nets
+            },
+            {   
+                isClicked:false, 
+                name:"nuggets", 
+                img:nuggets
+            },
+            {   
+                isClicked:false, 
+                name:"okc", 
+                img:okc
+            },
+            {   
+                isClicked:false, 
+                name:"pacers", 
+                img:pacers
+            },
+            {   
+                isClicked:false, 
+                name:"raptors", 
+                img:raptors
+            },
+            {   
+                isClicked:false, 
+                name:"rockets", 
+                img:rockets
+            },
+            {   
+                isClicked:false, 
+                name:"magic",
+                img:magic
+            },
+            {   
+                isClicked:false, 
+                name:"wizzards", 
+                img:wizzards
+            },
+            {   
+                isClicked:false, 
+                name:"gsw", 
+                img:gsw
+            }
+        ]
+
+        const shuffledArray = shuffleArray(arr);
+        setArray(shuffledArray);
+
+    },[count])
 
   return (
     <div className='cards'>
-        <p>Score:{count}</p>
-        <p>Best Score:</p>
-        {arr.map((el) => {
-            return <Card img={el}/>
+        <p>{count}</p>
+        {array.map((el) => {
+            return <Card obj={el} increment={incrementCount}/>
         })}
     </div>
   )

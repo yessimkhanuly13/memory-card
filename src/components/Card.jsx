@@ -2,10 +2,15 @@ import React from 'react'
 import './card.css'
 
 function Card(props) {
+
+    const handleClick = () =>{
+        props.increment(props.obj)
+    }
+
   return (
     <div className='card'>
-        <img src={props.img.img} alt='dssds'/>
-        <p>{props.img.name}</p>    
+        <img src={props.obj.img} alt='dssds' onClick={handleClick}/>
+        <p>{props.obj.name}</p>    
     </div>
   )
 }
