@@ -1,4 +1,9 @@
 .card{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1vw;
+}
+
+.cards{
+    background-color: bisque;
 }

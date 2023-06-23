@@ -14,62 +14,62 @@ import wizzards from '../assets/wizzards.png'
 export const data = [
     {   
         isClicked:false, 
-        name:"jazz", 
+        name:"Utah Jazz", 
         img:jazz
     },
     {   
         isClicked:false, 
-        name:"knicks", 
+        name:"New York Knicks", 
         img:knicks
     },
     {   
         isClicked:false, 
-        name:"mavericks", 
+        name:"Dallas Mavericks", 
         img:mavericks
     },
     {   
         isClicked:false, 
-        name:"nets", 
+        name:"Brooklyn Nets", 
         img:nets
     },
     {   
         isClicked:false, 
-        name:"nuggets", 
+        name:"Denver Nuggets", 
         img:nuggets
     },
     {   
         isClicked:false, 
-        name:"okc", 
+        name:"Oklahoma City Thunder", 
         img:okc
     },
     {   
         isClicked:false, 
-        name:"pacers", 
+        name:"Indiana Pacers", 
         img:pacers
     },
     {   
         isClicked:false, 
-        name:"raptors", 
+        name:"Toronto Raptors", 
         img:raptors
     },
     {   
         isClicked:false, 
-        name:"rockets", 
+        name:"Houston Rockets", 
         img:rockets
     },
     {   
         isClicked:false, 
-        name:"magic",
+        name:"Orlando Magic",
         img:magic
     },
     {   
         isClicked:false, 
-        name:"wizzards", 
+        name:"Washington Wizzards", 
         img:wizzards
     },
     {   
         isClicked:false, 
-        name:"gsw", 
+        name:"Golden State Warriors", 
         img:gsw
     }
 ]

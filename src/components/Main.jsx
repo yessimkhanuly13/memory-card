@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import './main.css'
 import { data } from './Data';
+import Header from './Header';
+import Footer from './Footer';
 
 function Main() {
     const arr = data;
@@ -31,7 +33,9 @@ function Main() {
                 return updatedArr;
             })
         }else{
-            setBestScore(count)
+            if(bestScore < count){
+                setBestScore(count)
+            }
             setCount(0);
             setArray((prevArray)=>{
                 const updateArr = prevArray.map((item)=>{
@@ -50,15 +54,13 @@ function Main() {
 
   return (
     <div className='cards'>
-        <div className='score'>
-            <p>Score: {count}</p>
-            <p>Best score: {bestScore}</p>
-        </div>
+        <Header score={count} bestScore={bestScore}/>
         <div className='card'>
             {array.map((el) => {
                 return <Card obj={el} increment={incrementCount}/>
             })}
         </div>
+        <Footer/>
     </div>
   )
 }
