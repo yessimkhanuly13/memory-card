@@ -3,16 +3,13 @@ import './card.css'
 
 function Card(props) {
 
-    // const handleClick = () =>{
-    //     props.increment(props.obj)
-    // }
-  const handleClick = (obj) =>{
-    
-  }
+    const handleClick = () =>{
+        props.increment(props.obj)
+    }
 
   return (
-    <div className='card'>
-        <img src={props.obj.img} alt='dssds' onClick={props.increment}/>
+    <div className='card-d'>
+        <img src={props.obj.img} alt='dssds' onClick={handleClick}/>
         <p>{props.obj.name}</p>    
     </div>
   )

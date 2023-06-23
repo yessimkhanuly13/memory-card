@@ -4,10 +4,10 @@ import './main.css'
 import { data } from './Data';
 
 function Main() {
-    const [obj, setObj] = useState({});
-    const [count, setCount] = useState(0);
-
     const arr = data;
+    const [array, setArray] = useState(arr);
+    const [count, setCount] = useState(0);
+    const [bestScore, setBestScore] = useState(0);
     
     const shuffleArray = (array) =>{
         for(let i = array.length - 1; i >= 0; i--){
@@ -17,42 +17,48 @@ function Main() {
         return array
     }
 
-    // const incrementCount = (object) =>{
+    const incrementCount = (object) =>{
 
-    //     if(object.isClicked === false){
-    //         setCount(count + 1);
-    //         setArray((prevArray)=>{
-    //             const updatedArr = prevArray.map((item)=>{
-    //                 if(item.name === object.name){
-    //                     return {...item, isClicked:true}
-    //                 }
-    //                 return item;
-    //             })
-    //             return updatedArr;
-    //         })
-    //     }else{
-    //         setCount(0);
-    //         setArray((prevArray)=>{
-    //             const updateArr = prevArray.map((item)=>{
-    //                 return {...item, isClicked:false};
-    //             })
-    //             return updateArr;
-    //         })
-    //     }
+        if(object.isClicked === false){
+            setCount(count + 1);
+            setArray((prevArray)=>{
+                const updatedArr = prevArray.map((item)=>{
+                    if(item.name === object.name){
+                        return {...item, isClicked:true}
+                    }
+                    return item;
+                })
+                return updatedArr;
+            })
+        }else{
+            setBestScore(count)
+            setCount(0);
+            setArray((prevArray)=>{
+                const updateArr = prevArray.map((item)=>{
+                    return {...item, isClicked:false};
+                })
+                return updateArr;
+            })
+        }
 
-    // }
+    }
 
     useEffect(()=>{
-        shuffleArray(arr);
+        shuffleArray(array);
 
     },[count])
 
   return (
     <div className='cards'>
-        <p>{count}</p>
-        {arr.map((el) => {
-            return <Card obj={el} increment={()=>setCount(count+1)}/> //increment={incrementCount}
-        })}
+        <div className='score'>
+            <p>Score: {count}</p>
+            <p>Best score: {bestScore}</p>
+        </div>
+        <div className='card'>
+            {array.map((el) => {
+                return <Card obj={el} increment={incrementCount}/>
+            })}
+        </div>
     </div>
   )
 }
