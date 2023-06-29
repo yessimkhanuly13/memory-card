@@ -1,9 +1,9 @@
 .card-d{
-    padding: 1vw;
+    padding: 1rem;
     background-color: beige;
 }
 
 .card-d img{
-    width: 250px;
-    height: 250px;
+    width: 20rem;
+    height: 20rem;
 }
